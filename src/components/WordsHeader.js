@@ -1,9 +1,11 @@
 const WordsHeader = ({headText}) => {
-    return <header>
-        <div className="headText">
-            <h3>{headText}</h3>
-        </div>
-    </header>
+    return (
+        <header className="WordsHeader">
+            <div className="headText">
+                <h5>{headText}</h5>
+            </div>
+        </header>
+    )
 }
 
 export default WordsHeader;

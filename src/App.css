@@ -52,7 +52,7 @@ body {
 .WordsHeader{
   padding-top: 20px;
   padding-bottom: 20px;
-
+  padding-left: 30px;
   display: flex;
 }
 
@@ -61,9 +61,23 @@ body {
   font-weight: bolder;
 }
 
-/* Home */
 
-.Home .AddNewWord button{
-  margin-top: 500px;
-  
+
+/* New */
+.NewWord input {
+  width: 50%;
+  height: 30px;
+}
+
+.NewWord textarea {
+  width: 50%;
+  min-height: 150px;
+  resize: vertical;
+}
+
+/* CardItem */
+
+.CardItem {
+  width: 300px;
+  height: 200px;
 }

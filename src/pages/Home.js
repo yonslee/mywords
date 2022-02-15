@@ -1,21 +1,26 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import WordsHeader from "../components/WordsHeader";
 import WordsButton from "../components/WordsButton";
+import CardList from "./CardList";
+import { useContext, useEffect, useState } from "react";
+import { WordsStateContext } from "../App";
+
 
 const Home = () => {
-    const {id} = useParams();
+
+    const cardList = useContext(WordsStateContext);
+
+    const [data, setData] = useState([]);
+
+    console.log(data);
+
     const navigate = useNavigate();
 
     return (
         <div>
-            <h1>Home</h1>
-            <p>이곳은 홈</p>
-            <div className="AddNewWord">
-                <WordsButton
-                    type={'write'}
-                    text={'+'}
-                    onClick={() => navigate('/New')}
-                />
-            </div>
+            <WordsHeader headText={"MY DICTIONARY"} />
+            {/* <CardList cardList={data}/> */}
+            <WordsButton text={"+"} onClick= {() => navigate("/New")} />
         </div>
     );
 };

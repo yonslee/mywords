@@ -1,12 +1,13 @@
 import React, { useRef } from "react";
+import { createStore } from "redux";
 
 import './App.css';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 
 import Home from './pages/Home';
 import New from './pages/New';
-import Edit from './pages/Edit';
-import WordsHeader from "./components/WordsHeader";
+
+const store = createStore();
 
 const reducer = (state, action) => {
   let newState = [];
@@ -22,19 +23,14 @@ const reducer = (state, action) => {
       newState = state.filter((it) => it.id !== action.targetId);
       break;
     }
-    case 'EDIT' : {
-      newState = state.map((it) =>
-        it.id === action.data.id? {...action.data}: it
-      );
-      break;
-    }
     default:
       return state;
   }
   return newState;
 };
 
-export const WordsContext = React.createContext();
+export const WordsStateContext = React.createContext();
+export const WordsDispatchContext = React.createContext();
 
 function App() {
 
@@ -53,32 +49,27 @@ function App() {
   }
 
   const onRemove = (targetId) => {
-    dispatch({type:"DELETE", targetId});
+    dispatch({type:"REMOVE", targetId});
   }
 
-  const onEdit = (targetId, word, explain, example) => {
-    dispatch({
-      type:"EDIT",
-      data:{
-        id: targetId,
-        word,
-        explain,
-        example
-      }
-    });
-  };
-
   return (
-    <BrowserRouter>
-      <div className="App">
-        <WordsHeader headText={"App"}/>
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/new' element={<New />} />
-          <Route path='/edit' element={<Edit />} />
-        </Routes>
-      </div>
-    </BrowserRouter>
+    <WordsStateContext.Provider value={data}>
+      <WordsDispatchContext.Provider
+        value={{
+          onCreate,
+          onRemove,
+        }}
+      >
+        <BrowserRouter>
+          <div className="App">
+            <Routes>
+              <Route path='/' element={<Home />} />
+              <Route path='/new' element={<New />} />
+            </Routes>
+          </div>
+        </BrowserRouter>
+      </WordsDispatchContext.Provider>
+    </WordsStateContext.Provider>
   );
 }
 
