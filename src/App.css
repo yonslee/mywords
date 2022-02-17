@@ -1,0 +1,110 @@
+
+body {
+  background-color: honeydew;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+  margin: 0;
+
+}
+
+@media(min-width: 660px) {
+  .App {
+    width: 600px;
+  }
+}
+
+@media(max-width:660px) {
+  .App{
+    width: 90vw;
+  }
+}
+
+#root {
+  background-color: white;
+  box-shadow: darkgray 0px 5px 10px 0px;
+}
+
+.App {
+  min-height: 93vh;
+}
+
+/* Buttons */
+
+.MyButton {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  border: none;
+  border-radius: 25px;
+  padding: auto;
+  margin-left: 20px;
+  margin-right: 20px;
+  font-size: 25px;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.WordsButton.default {
+  background-color: gainsboro;
+  color: black;
+}
+
+/* Header */
+
+.Header{
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 30px;
+  display: flex;
+}
+
+.WordsHeader .headText {
+  font-size: 30px;
+  font-weight: bolder;
+}
+
+
+
+/* New */
+.NewWord input {
+  width: 50%;
+  height: 30px;
+}
+
+.NewWord textarea {
+  width: 50%;
+  min-height: 150px;
+  resize: vertical;
+}
+
+/* CardItem */
+
+.CardItem {
+  width: 300px;
+  height: 200px;
+}
+
+
+.ListStyle {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.ItemStyle {
+  padding: 16px;
+  margin: 8px;
+  background-color: aliceblue;
+}
+
+.SpinnerOuter {
+  background-color: blue;
+  width: 100%;
+  height: 100%;
+  z-index: +1000;
+}
